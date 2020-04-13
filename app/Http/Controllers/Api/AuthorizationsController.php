@@ -51,7 +51,8 @@ class AuthorizationsController extends Controller
         if (!$user) {
             // 如果未提交用户名密码，403 错误提示
             if (!$request->username) {
-                throw new AuthenticationException('用户不存在');
+                return response(['message'=>'用户不存在'], 403);
+                // throw new AuthenticationException('用户不存在');
             }
 
             $username = $request->username;
